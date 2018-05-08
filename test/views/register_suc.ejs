@@ -1,0 +1,10 @@
+<% include header.ejs %>
+<div class="index">
+    <div class="container">
+        <h1><%= title %></h1>
+        <%if(name!='' && password != ''){%>
+        用户名：<%=name%><br>密码：<%=password%>
+        <%}%>
+    </div>
+</div>
+<% include footer.ejs %>

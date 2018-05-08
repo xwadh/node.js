@@ -1,0 +1,29 @@
+.index {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.index h1 {
+  text-align: center;
+  color: #333;
+  border-bottom: 1px #eee solid;
+  padding-bottom: 10px;
+}
+.index .container {
+  width: 400px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: 0 0 8px #ccc;
+}
+.index .container .input-group {
+  margin: 20px auto;
+}
+.index .container .login {
+  float: right;
+}
+.index .container .reg {
+  float: left;
+}
