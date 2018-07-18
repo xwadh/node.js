@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.cnblogs.com/simadi/p/5793622.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NodeJS常用模块介绍 - simadi - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./NodeJS常用模块介绍 - simadi - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./NodeJS常用模块介绍 - simadi - 博客园_files/bundle-SimpleBlue.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./NodeJS常用模块介绍 - simadi - 博客园_files/bundle-SimpleBlue-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/simadi/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/simadi/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/simadi/wlwmanifest.xml">
+<script async="" src="./NodeJS常用模块介绍 - simadi - 博客园_files/analytics.js.下载"></script><script src="./NodeJS常用模块介绍 - simadi - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = 'simadi', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./NodeJS常用模块介绍 - simadi - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/simadi/">天道酬勤!!!</a></div>
+<div class="subtitle"></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/simadi/">首页</a></li>
+<li id="nav_newpost"><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/simadi">联系</a></li>
+<li id="nav_rss"><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/simadi/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/simadi/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<!--done-->
+随笔-501&nbsp;
+文章-0&nbsp;
+评论-38&nbsp;
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/simadi/p/5793622.html">NodeJS常用模块介绍</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>收集了NodeJS开发中常用的一些模块。</p>
+<h2 id="articleHeader0"><a name="t0"></a>MVC框架 -&nbsp;<a href="http://expressjs.com/" target="_blank">Express</a></h2>
+<p>Express 是轻量灵活的Nodejs Web应用框架，它可以快速地搭建网站。Express框架建立在Nodejs内置的Http模块上，并对Http模块再包装，从而实际Web请求处理的 功能。它支持多种前端模板，如Jade, EJS等。它是T.J大神的作品，不过已经交由其它团队维护了。</p>
+<p><a href="http://koajs.com/" target="_blank">Koa</a>是T.J大神的另外一个作品，号称下一 代NodeJS web框架。使用 koa 编写 web 应用，通过组合不同的 generator，可以免除重复繁琐的回调函数嵌套，并极大地提升常用错误处理效率。Koa 不在内核方法中绑定任何中间件，它仅仅提供了一个轻量优雅的函数库，使得编写 Web 应用变得得心应手。需要注意的是:koa 依赖支持 generator 的 Node 环境，准确来说，是 node &gt;= 0.11.9 的环境。安装完成后，应确保使用 $ node app.js --harmony 或(--harmony-generators) 即，harmony 模式运行程序。个人觉得如果是正式产品中还是用Express比较靠谱。</p>
+<h2 id="articleHeader1"><a name="t1"></a>Rest开发 -&nbsp;<a href="http://mcavage.me/node-restify/" target="_blank">Restify</a></h2>
+<p>restify 是一个基于Nodejs的REST应用框架，支持服务器端和客户端。restify比起express更专注于REST服务，去掉了express中的 template, render等功能，同时强化了REST协议使用，版本化支持，HTTP的异常处理。</p>
+<p><a href="https://www.npmjs.org/package/hapi" target="_blank">hapi</a>是一个用来构建基于 Node.js 的应用和服务的富框架，使得开发者把重点放在便携可重用的应用逻辑而不是构建架构。内建输入验证、缓存、认证和其他 Web 应用开发常用的功能，用来开发rest代码也是一个不错的选择。</p>
+<h2 id="articleHeader2"><a name="t2"></a>前端模板 -&nbsp;<a href="http://expressjs.com/" target="_blank">EJS</a></h2>
+<p>EJS是一个功能强大又比较容易使用的前端模板，Express对EJS支持比较好，它的语法比较接近前端开发人员的使用方式。另外名气比较大的前端模板是<a href="https://www.npmjs.org/package/jade" target="_blank">Jade</a>，它和Express是同一个作者开发的，Express默认用的就是Jade模板，但是它的语法更接近后端语言的语法，前端开发人员很多时候难以适应，但是它的功能确实非常强大。</p>
+<h2 id="articleHeader3"><a name="t3"></a>数据库驱动 -&nbsp;<a href="http://mongoosejs.com/" target="_blank">Mongoose</a></h2>
+<p>MongoDB和NodeJS应该是最佳搭档了，而<a href="http://mongoosejs.com/" target="_blank">Mongoose</a>是MongoDB的对象模型工具，通过Mongoose框架，可以进行非常方便的访问MongoDB的操作。当然如果你对性能要求非常高的话，也可以考虑使用<a href="https://www.npmjs.org/package/mongodb" target="_blank">mongodb</a>，它功能相对较少，比较底层一些，其实Mongoose就是基于它构建的。</p>
+<p>其它：<a href="https://www.npmjs.org/package/redis" target="_blank">redis</a>，<a href="https://github.com/felixge/node-mysql" target="_blank">mysql</a>。</p>
+<h2 id="articleHeader4"><a name="t4"></a>Web Socket -&nbsp;<a href="http://socket.io/" target="_blank">Socket.IO</a></h2>
+<p>NodeJS的一个主要优点是高并发，因此NodeJS是Web Socket服务器的理想选择，而Socket.IO则Socket模块的不二选择，可以用于构建聊天室、客服系统等。Socket.IO不仅提供了服务 器端代码，还提供了前端JS代码，可以非常方便的进行Web Socket开发，同时它兼容那些不支持Web Socket的浏览器。</p>
+<h2 id="articleHeader5"><a name="t5"></a>日志管理 -&nbsp;<a href="https://www.npmjs.org/package/log4js" target="_blank">Log4js</a></h2>
+<p>类似于JAVA中的log4j，具有coloured console logging、可以设置输出等级等功能，简单易用，如果没有复杂需求足够使用了。<a href="https://github.com/flatiron/winston" target="_blank">winston</a>是一个功能更强大也更复杂的日志模块，人气比较高，对功能有追求的可以看看这个模块。</p>
+<h2 id="articleHeader6"><a name="t6"></a>HTTP调用&nbsp;<a href="https://www.npmjs.org/package/request" target="_blank">Request</a></h2>
+<p>可以理解为一个简化的CURL模块，建立各种HTTP请求，支持授权验证，其实功能还是非常多的，基本满足绝大部分需求。目前在NPM模块排行前几名。</p>
+<h2 id="articleHeader7"><a name="t7"></a>异步流程控制 -&nbsp;<a href="https://www.npmjs.org/package/async" target="_blank">Async</a></h2>
+<p>NodeJS中大量的异步callback嵌套估计让很多人头疼，尤其是多个异步函数要求一定的调用顺序时更是让代码失控，Async可以非常好的解决这些问题，它可以使异步流程同步化。<a href="https://www.npmjs.org/package/q" target="_blank">Q</a>是另外一种非常不错的选择，它是实现了promises接口。</p>
+<h2 id="articleHeader8"><a name="t8"></a>部署 -&nbsp;<a href="https://www.npmjs.org/package/forever" target="_blank">forever</a></h2>
+<p><a href="https://www.npmjs.org/package/forever" target="_blank">forever</a>可以看做是一个nodejs的守护进程，能够启动，停止，重启我们的app应用，运行稳定，支持高并发，启动/停止命令简单，支持热部署，宕机重启，监控界面和日志，集群环境。<a href="https://www.npmjs.org/package/pm2" target="_blank">pm2</a>是一个带有负载均衡功能的Node应用的进程管理器。当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载。</p>
+<p>如果你想要从操作系统的层次来解决NodeJS服务器管理问题，可以参考：<a href="http://blog.fens.me/linux-upstart-nodejs/" target="_blank">Linux系统服务upstart</a></p>
+<p>当然开发时可以使用<a href="https://www.npmjs.org/package/supervisor" target="_blank">supervisor</a>启动服务，它能够监控文件，当有文件更新时自动重启服务，其实Forever也有这个功能。</p>
+<h2 id="articleHeader9"><a name="t9"></a>项目管理</h2>
+<p><a href="http://gruntjs.com/" target="_blank">grunt</a>是一个自动化的构建工具，对于 需要反复重复的任务，例如压缩（minification）、编译、单元测试、linting等，自动化工具可以减轻你的劳动，简化你的工作。当你正确配 置好了任务，任务运行器就会自动帮你或你的小组完成大部分无聊的工作。并且它有大量的插件可以使用。我主要用它作前端的自动化处理工作。</p>
+<p><a href="http://bower.io/" target="_blank">bower</a>是twitter的又一个开源项目，使用nodejs开发，用于web包管理。作为一个js依赖管理的工具,提供一种理想包管理方式,借助了npm的一些思想,为我们提供一个舒服的开发环境。</p>
+<p><a href="http://yeoman.io/" target="_blank">yeoman</a>是Google的团队和外部贡献 者团队合作开发的，他的目标是通过Grunt（一个用于开发任务自动化的命令行工具）和Bower（一个HTML、CSS、Javascript和图片等 前端资源的包管理器）的包装为开发者创建一个易用的工作流。Yeoman的目的不仅是要为新项目建立工作流，同时还是为了解决前端开发所面临的诸多严重问 题，例如零散的依赖关系。</p>
+<h2 id="articleHeader10"><a name="t10"></a>定时任务 -&nbsp;<a href="https://www.npmjs.org/package/cron" target="_blank">Cron</a></h2>
+<p>cron是一个小巧的定时任务管理模块，可以满足我们绝大部分需求，它支持标准的cron patterns,熟悉linux cron tab的语法就可以很容易上手。</p>
+<p>另外一个名气比较大且功能比较强大的定时模块是<a href="http://bunkat.github.io/later/index.html" target="_blank">Later</a>，对于功能要求比较高的可用用它，later的缺点是有点复杂，不像cron只要拿来就会用了。</p>
+<h2 id="articleHeader11"><a name="t11"></a>工具包</h2>
+<p><a href="http://documentcloud.github.io/underscore/" target="_blank">underscore</a>是一个JS工具库，主要提供了对数组，对象，函数等一些基础工具函数，可以同时在浏览器和NodeJS环境中运行。建议在每个项目中使用。</p>
+<p><a href="https://www.npmjs.org/package/moment" target="_blank">moment</a>是一个日期工具库，主要提供了对日期的解析，验证，操作和格式化等，如果需要对日期作较多的操作或比较复杂的操作，则它是一个不错的选择，毕竟JS自带的Date功能太弱了。</p>
+<p><a href="https://www.npmjs.org/package/connect" target="_blank">Connect</a>是一系列的中间件的集合，包括日志，session, cookie, body parser等，它做了大量HTTP相关的基础性的工作，Express框架就依赖它进行工作的。</p>
+<h2 id="articleHeader12"><a name="t12"></a>单元测试</h2>
+<p><a href="https://www.npmjs.org/package/mocha" target="_blank">Mocha</a>,<a href="https://www.npmjs.org/package/karma" target="_blank">Karma</a>,<a href="https://www.npmjs.org/package/jasmine" target="_blank">Jasmine</a>。</p>
+<h2 id="articleHeader13"><a name="t13"></a>参考文献</h2>
+<ul>
+<li><a href="http://blog.fens.me/series-nodejs/" target="_blank">从零开始nodejs系列文章</a></li>
+<li><a href="http://blog.jobbole.com/71913/" target="_blank">Node.JS 学习路线图</a></li>
+<li><a href="https://www.npmjs.org/" target="_blank">NPM官网</a></li>
+</ul></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/simadi/tag/NodeJS/">NodeJS</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5793622,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;4249d5cb-d518-e111-b422-842b2b196315&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./NodeJS常用模块介绍 - simadi - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./NodeJS常用模块介绍 - simadi - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/simadi/" target="_blank"><img src="./NodeJS常用模块介绍 - simadi - 博客园_files/20130521151649.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/simadi/">simadi</a><br>
+            <a href="http://home.cnblogs.com/u/simadi/followees">关注 - 60</a><br>
+            <a href="http://home.cnblogs.com/u/simadi/followers">粉丝 - 16</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;4249d5cb-d518-e111-b422-842b2b196315&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5793622,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(5793622,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/simadi/p/5793607.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/simadi/p/5793607.html" title="发布于2016-08-21 21:15">七天学会NodeJS</a><br><a href="http://www.cnblogs.com/simadi/p/5793642.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/simadi/p/5793642.html" title="发布于2016-08-21 21:26">nodejs开发经验</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-08-21 21:20</span> <a href="http://www.cnblogs.com/simadi/">simadi</a> 阅读(<span id="post_view_count">9543</span>) 评论(<span id="post_comment_count">3</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5793622" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/simadi/p/5793622.html#" onclick="AddToWz(5793622);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=113862,cb_entryId=5793622,cb_blogApp=currentBlogApp,cb_blogUserGuid='4249d5cb-d518-e111-b422-842b2b196315',cb_entryCreatedDate='2016/8/21 21:20:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/simadi/p/5793622.html#3813997" class="layer">#1楼</a><a name="3813997" id="comment_anchor_3813997"></a>  <span class="comment_date">2017-10-18 10:34</span> <a id="a_comment_author_3813997" href="http://home.cnblogs.com/u/1163730/" target="_blank">dengnan</a> <a href="http://msg.cnblogs.com/send/dengnan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3813997" class="blog_comment_body">总结的很好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3813997,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3813997,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/simadi/p/5793622.html#3814000" class="layer">#2楼</a><a name="3814000" id="comment_anchor_3814000"></a>  <span class="comment_date">2017-10-18 10:34</span> <a id="a_comment_author_3814000" href="http://home.cnblogs.com/u/1163730/" target="_blank">dengnan</a> <a href="http://msg.cnblogs.com/send/dengnan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3814000" class="blog_comment_body">看来要看的东西 太多了 慢慢学习吧</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3814000,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3814000,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/simadi/p/5793622.html#3821795" class="layer">#3楼</a><a name="3821795" id="comment_anchor_3821795"></a><span id="comment-maxId" style="display:none;">3821795</span><span id="comment-maxDate" style="display:none;">2017/10/26 9:41:29</span>  <span class="comment_date">2017-10-26 09:41</span> <a id="a_comment_author_3821795" href="http://www.cnblogs.com/jk-collection/" target="_blank">YF.G</a> <a href="http://msg.cnblogs.com/send/YF.G" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3821795" class="blog_comment_body">介绍的很好</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3821795,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3821795,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3821795_avatar" style="display:none;">http://pic.cnblogs.com/face/u332935.jpg?id=21164632</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/simadi/p/5793622.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/simadi/p/5793622.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="https://dnspod.cloud.tencent.com/act/yearendsales?from=IT&amp;fromSource=gwzcw.951778.951778.951778" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-T2-腾讯云&#39;)">【推荐】腾讯云新注册用户域名抢购1元起</a><br><a href="http://clickc.admaster.com.cn/c/a105960,b2436453,c1705,i0,m101,8a1,8b2,h" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-T2-华为云&#39;)">【活动】华为云7大明星产品0元免费使用！</a><br><a href="https://www.upyun.com/products/prismcdn?utm_source=cnblogs&amp;utm_medium=banner&amp;utm_campaign=prismcdn&amp;utm_content=0614" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-T2-upyun&#39;)">【推荐】又拍云强势推出超低价、低延时、超强兼容的 P2P-CDN！</a><br><a href="http://challenge.xfyun.cn/?ch=bk" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-xfyun&#39;)">【大赛】2018首届“顶天立地”AI开发者大赛</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cloud.tencent.com/freetier?fromSource=gwzcw.1027255.1027255.1027255" target="_blank"><img width="300" height="250" src="./NodeJS常用模块介绍 - simadi - 博客园_files/24442-20180611171134854-1629599186.jpg" alt="腾讯云0611" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/600235/" target="_blank">从“照骗”到短视频“整容”，美颜是女孩的刚需吗？</a><br> ·  <a href="https://news.cnblogs.com/n/600234/" target="_blank">梅西的“中年危机”</a><br> ·  <a href="https://news.cnblogs.com/n/600233/" target="_blank">二马之争</a><br> ·  <a href="https://news.cnblogs.com/n/600232/" target="_blank">《纪念碑谷2》营收亮眼，但它的成功难以复制</a><br> ·  <a href="https://news.cnblogs.com/n/600231/" target="_blank">为什么我的手机、平板和游戏机都长一个样？</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/34770/" target="_blank"><img src="./NodeJS常用模块介绍 - simadi - 博客园_files/TB1gBPhgZLJ8KJjy0FnXXcFDpXa-468-60.jpg" alt="" style="width: 468px; height: 60px;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/522513/" target="_blank">如何提升你的能力？给年轻程序员的几条建议</a><br> ·  <a href="http://kb.cnblogs.com/page/553361/" target="_blank">程序员的那些反模式</a><br> ·  <a href="http://kb.cnblogs.com/page/598335/" target="_blank">程序员的宇宙时间线</a><br> ·  <a href="http://kb.cnblogs.com/page/597877/" target="_blank">突破程序员思维</a><br> ·  <a href="http://kb.cnblogs.com/page/597631/" target="_blank">云、雾和霭计算如何一起工作</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/simadi/">simadi</a><br>园龄：<a href="https://home.cnblogs.com/u/simadi/" title="入园时间：2011-11-27">6年7个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/simadi/followers/">16</a><br>关注：<a href="https://home.cnblogs.com/u/simadi/followees/">60</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;4249d5cb-d518-e111-b422-842b2b196315&#39;)">+加关注</a></div><script>getFollowStatus('4249d5cb-d518-e111-b422-842b2b196315')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/05/01&#39;);return false;">&lt;</a></td><td align="center">2018年6月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/07/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center"><a href="http://www.cnblogs.com/simadi/archive/2018/06/08.html"><u>8</u></a></td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center"><a href="http://www.cnblogs.com/simadi/archive/2018/06/11.html"><u>11</u></a></td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalTodayDay" align="center"><a href="http://www.cnblogs.com/simadi/archive/2018/06/27.html"><u>27</u></a></td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/simadi/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/simadi/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/simadi/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/simadi/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/simadi/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/simadi/tag/NodeJS/">NodeJS</a>(24)</li><li><a href="http://www.cnblogs.com/simadi/tag/Android/">Android</a>(20)</li><li><a href="http://www.cnblogs.com/simadi/tag/Kotlin/">Kotlin</a>(16)</li><li><a href="http://www.cnblogs.com/simadi/tag/sails/">sails</a>(13)</li><li><a href="http://www.cnblogs.com/simadi/tag/php/">php</a>(9)</li><li><a href="http://www.cnblogs.com/simadi/tag/Android%20studio/">Android studio</a>(8)</li><li><a href="http://www.cnblogs.com/simadi/tag/Atom/">Atom</a>(8)</li><li><a href="http://www.cnblogs.com/simadi/tag/c%23/">c#</a>(7)</li><li><a href="http://www.cnblogs.com/simadi/tag/ef/">ef</a>(7)</li><li><a href="http://www.cnblogs.com/simadi/tag/sqlite/">sqlite</a>(7)</li><li><a href="http://www.cnblogs.com/simadi/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(502)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/simadi/archive/2018/06.html">2018年6月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/simadi/archive/2018/05.html">2018年5月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/simadi/archive/2018/04.html">2018年4月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="https://www.cnblogs.com/simadi/archive/2018/03.html">2018年3月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="https://www.cnblogs.com/simadi/archive/2018/02.html">2018年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="https://www.cnblogs.com/simadi/archive/2018/01.html">2018年1月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="https://www.cnblogs.com/simadi/archive/2017/12.html">2017年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="https://www.cnblogs.com/simadi/archive/2017/11.html">2017年11月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="https://www.cnblogs.com/simadi/archive/2017/10.html">2017年10月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="https://www.cnblogs.com/simadi/archive/2017/09.html">2017年9月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="https://www.cnblogs.com/simadi/archive/2017/08.html">2017年8月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="https://www.cnblogs.com/simadi/archive/2017/07.html">2017年7月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="https://www.cnblogs.com/simadi/archive/2017/06.html">2017年6月 (62)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="https://www.cnblogs.com/simadi/archive/2017/05.html">2017年5月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="https://www.cnblogs.com/simadi/archive/2017/04.html">2017年4月 (47)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="https://www.cnblogs.com/simadi/archive/2017/03.html">2017年3月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="https://www.cnblogs.com/simadi/archive/2017/02.html">2017年2月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="https://www.cnblogs.com/simadi/archive/2016/12.html">2016年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="https://www.cnblogs.com/simadi/archive/2016/11.html">2016年11月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="https://www.cnblogs.com/simadi/archive/2016/10.html">2016年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="https://www.cnblogs.com/simadi/archive/2016/09.html">2016年9月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="https://www.cnblogs.com/simadi/archive/2016/08.html">2016年8月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_22" href="https://www.cnblogs.com/simadi/archive/2016/07.html">2016年7月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_23" href="https://www.cnblogs.com/simadi/archive/2016/06.html">2016年6月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_24" href="https://www.cnblogs.com/simadi/archive/2016/05.html">2016年5月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_25" href="https://www.cnblogs.com/simadi/archive/2016/04.html">2016年4月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_26" href="https://www.cnblogs.com/simadi/archive/2016/03.html">2016年3月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_27" href="https://www.cnblogs.com/simadi/archive/2016/02.html">2016年2月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_28" href="https://www.cnblogs.com/simadi/archive/2016/01.html">2016年1月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_29" href="https://www.cnblogs.com/simadi/archive/2015/12.html">2015年12月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_30" href="https://www.cnblogs.com/simadi/archive/2015/11.html">2015年11月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_31" href="https://www.cnblogs.com/simadi/archive/2015/10.html">2015年10月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_32" href="https://www.cnblogs.com/simadi/archive/2015/09.html">2015年9月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_33" href="https://www.cnblogs.com/simadi/archive/2015/08.html">2015年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_34" href="https://www.cnblogs.com/simadi/archive/2015/07.html">2015年7月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_35" href="https://www.cnblogs.com/simadi/archive/2015/06.html">2015年6月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_36" href="https://www.cnblogs.com/simadi/archive/2015/05.html">2015年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_37" href="https://www.cnblogs.com/simadi/archive/2015/04.html">2015年4月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_38" href="https://www.cnblogs.com/simadi/archive/2015/03.html">2015年3月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_39" href="https://www.cnblogs.com/simadi/archive/2015/02.html">2015年2月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_40" href="https://www.cnblogs.com/simadi/archive/2015/01.html">2015年1月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_41" href="https://www.cnblogs.com/simadi/archive/2014/12.html">2014年12月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_42" href="https://www.cnblogs.com/simadi/archive/2014/11.html">2014年11月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_43" href="https://www.cnblogs.com/simadi/archive/2014/10.html">2014年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_44" href="https://www.cnblogs.com/simadi/archive/2014/09.html">2014年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_45" href="https://www.cnblogs.com/simadi/archive/2014/08.html">2014年8月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_46" href="https://www.cnblogs.com/simadi/archive/2014/07.html">2014年7月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_47" href="https://www.cnblogs.com/simadi/archive/2014/06.html">2014年6月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_48" href="https://www.cnblogs.com/simadi/archive/2014/05.html">2014年5月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_49" href="https://www.cnblogs.com/simadi/archive/2014/04.html">2014年4月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_50" href="https://www.cnblogs.com/simadi/archive/2014/03.html">2014年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_51" href="https://www.cnblogs.com/simadi/archive/2014/01.html">2014年1月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_52" href="https://www.cnblogs.com/simadi/archive/2013/12.html">2013年12月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_53" href="https://www.cnblogs.com/simadi/archive/2013/11.html">2013年11月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_54" href="https://www.cnblogs.com/simadi/archive/2013/10.html">2013年10月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_55" href="https://www.cnblogs.com/simadi/archive/2013/09.html">2013年9月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_56" href="https://www.cnblogs.com/simadi/archive/2013/07.html">2013年7月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_57" href="https://www.cnblogs.com/simadi/archive/2013/06.html">2013年6月 (31)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_58" href="https://www.cnblogs.com/simadi/archive/2013/05.html">2013年5月 (12)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/simadi/p/7784759.html#3999424">1. Re:谷歌浏览器安装程序的下载地址，可安装原装的谷歌浏览器，可自动升级</a></li>
+        <li class="recent_comment_body">网址无效了，请问有没有更好的？</li>
+        <li class="recent_comment_author">--阿恺</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/simadi/p/6944139.html#3853667">2. Re:vs中nodejs代码 resharper 提示 ECMAScript2015 Feature. your Current language level is ECMAScript5的解决办法</a></li>
+        <li class="recent_comment_body">66666 我也在纳闷呢 为啥一直红波浪</li>
+        <li class="recent_comment_author">--123!</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/simadi/p/6935554.html#3848074">3. Re:ReSharper Ultimate 2017 下载地址及破解方法</a></li>
+        <li class="recent_comment_body">谢谢谢谢谢！</li>
+        <li class="recent_comment_author">--乐与怒</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/simadi/p/6845673.html#3832348">4. Re:Android开发中string.xml文件的使用</a></li>
+        <li class="recent_comment_body">2.定义string数组(arrays.xml).11. ----getResources().getStringArray(R.string.sports); 这里应该是getResources()......</li>
+        <li class="recent_comment_author">--sssfffsssfff</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/simadi/p/5793622.html#3821795">5. Re:NodeJS常用模块介绍</a></li>
+        <li class="recent_comment_body">介绍的很好</li>
+        <li class="recent_comment_author">--.G</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/simadi/p/4688142.html">1. Windows 10正式版密钥大全,Win10激活序列号KEY大全(27972)</a></li><li><a href="https://www.cnblogs.com/simadi/p/3503631.html">2. Sublime Text 3 破解版 + 注册机 + 汉化包 + 教程(12010)</a></li><li><a href="https://www.cnblogs.com/simadi/p/5793622.html">3. NodeJS常用模块介绍(9544)</a></li><li><a href="https://www.cnblogs.com/simadi/p/5894394.html">4. WebStorm设置编辑器中的字体大小(7360)</a></li><li><a href="https://www.cnblogs.com/simadi/p/4357057.html">5. MMTool制作Ozmosis引导BIOS完美引导OS X系统(6979)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/simadi/p/6935554.html">1. ReSharper Ultimate 2017 下载地址及破解方法(6)</a></li><li><a href="https://www.cnblogs.com/simadi/p/3867986.html">2. c# winform panel 流式布局 panel块可自动排列(4)</a></li><li><a href="https://www.cnblogs.com/simadi/p/3514766.html">3. Post数据到 https异常:基础连接已经关闭: 连接被意外关闭 解决办法(3)</a></li><li><a href="https://www.cnblogs.com/simadi/p/3408832.html">4. DevExpress 12.1 换肤 超级简单的方法(2013-11-5版)(3)</a></li><li><a href="https://www.cnblogs.com/simadi/p/5793622.html">5. NodeJS常用模块介绍(3)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/simadi/p/3503631.html">1. Sublime Text 3 破解版 + 注册机 + 汉化包 + 教程(1)</a></li><li><a href="https://www.cnblogs.com/simadi/p/3408832.html">2. DevExpress 12.1 换肤 超级简单的方法(2013-11-5版)(1)</a></li><li><a href="https://www.cnblogs.com/simadi/p/5012111.html">3. 源代码版本控制工具TortoiseSVN，AnkhSVN最新版本下载地址(1)</a></li><li><a href="https://www.cnblogs.com/simadi/p/4787488.html">4. IIS使用 URL Rewrite Module 2.0组件 设置伪静态的方法(1)</a></li><li><a href="https://www.cnblogs.com/simadi/p/4665694.html">5. Visual Studio 2015 中文企业版及专业版 正式版下载地址 激活秘钥 正版key(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 simadi
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

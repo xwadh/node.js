@@ -1,0 +1,227 @@
+$(function () {
+			//去除tags自动生成的style
+            $('.tags a').removeAttr('style');
+			/*假如.content高度小于#siderbar的高度，则隐藏tags*/
+			if($('.post-content .content').height()< $('#sidebar').height()){
+				$('.tags').hide();
+				$('#tags_h3').hide();
+				$('#contents').css('min-height','auto');
+				}
+			//去除content内容中img标签的宽度高度
+			$('.content img').removeAttr('width');
+			$('.content img').removeAttr('height');
+			$('.wp-caption').removeAttr('style');
+    		$('.wp-caption').css('width','100%').css('textAlign','center')
+			//左侧栏目导航浮动
+			$('#classification').css({
+                'top':$(window).scrollTop()
+            });
+			//获得sidebar的高度，由于css设置box-zing:border-box，因此需要再加30
+			var sidebar_h = $('#sidebar').height()+30;
+			//alert($('#ads').offset().top);
+			if($(window).scrollTop() > sidebar_h){
+			$('#ads').css({
+				'top':$(window).scrollTop() - sidebar_h,
+				'position':'relative'
+				});
+			}
+			$(window).scroll(function(){
+                /*滚动距离大于0，则固定#classification*/
+                if($(this).scrollTop() > 0){
+                    $('#classification').css({
+                        'top':$(window).scrollTop()
+                    });
+                }else{
+                    $('#classification').removeAttr('style');
+                }
+				if($(this).scrollTop()>sidebar_h){
+								$('#ads').css({
+									'top':$(window).scrollTop() - sidebar_h,
+									'position':'relative'
+								});
+					}else{
+						$('#ads').removeAttr('style');
+						}
+        	});
+			//搜索点击事件
+			$('#search').click(function(){
+				if($('input[name=s]').val()==='' || $('input[name=s]').val().length<=0){
+					return false;
+				}else {
+					$('#searchform').submit();
+				}
+
+				});
+			//console.log('icbbbbbb');
+            //loading 动画
+            $('.top-load').hide();
+            $(document).ajaxStart(function () {
+                $('.top-load').show();
+            }).ajaxStop(function () {
+                $('.top-load').hide();
+            });
+            
+            //添加遮罩层
+            $('body').append('<div id="screen"></div>');
+            //添加侧边响应式导航
+            $('body').append(
+                    '<div id="k-nav">' +
+                    '<ul>' +
+                    '<li><a href="http://www.egtch.com">首页</a></li>' +
+                    '<li><a href="http://www.egtch.com/archives/category/program">编程技术</a></li>' +
+                    '<li><a href="http://www.egtch.com/archives/category/front">前端开发</a></li>' +
+                    '<li><a href="http://www.egtch.com/archives/category/sql">SQL语句</a></li>' +
+                    '<li><a href="http://www.egtch.com/archives/category/linux">Linux</a></li>' +
+                    '<li><a href="http://www.egtch.com/archives/category/life">生活/旅行</a></li>' +
+                    '<li><a href="http://www.egtch.com/about">About me</a></li>' +
+                    '<li><a href="http://www.egtch.com/work">作品</a></li>' +
+                    '<li><a href="http://www.egtch.com/archives/category/buytheme">猪蹄</a></li>' +
+                    '<li><a href="http://www.egtch.com/minibarcms">MiniBarCMS</a></li>' +
+                    '</ul>' +
+                    '</div>'
+            );
+            $('#nav-show').click(function () {
+                $('#nav-show').hide();
+                $('#nav-close').show();
+                $('body').css({overflow:"hidden"});
+                $('#k-nav').stop().animate({'right':0});
+                $('#screen').css({
+                    display:'block',
+                    width:$(window).width(),
+                    height:$(document).height(),
+                    zIndex:2000
+                }).slideDown(300);
+            });
+            $('#nav-close').click(function () {
+                $('#screen').hide();
+                $('body').removeAttr('style');
+                $('#nav-close').hide();
+                $('#nav-show').show();
+                $('#k-nav').stop().animate({'right':'-60%'});
+            });
+            $('#screen').click(function () {
+                $('#screen').hide();
+                $('body').removeAttr('style');
+                $('#nav-close').hide();
+                $('#nav-show').show();
+                $('#k-nav').stop().animate({'right':'-60%'});
+            });
+			
+			$('.info a').each(function() {
+				//在tag前面增加一个font图标
+                if(this.rel === 'category tag'){
+					$(this).html('<i class="fa fa-caret-right" aria-hidden="true"></i>'+' '+$(this).html());
+				}
+				//评论处增加图标
+				var reg = /^.*[#]respond/;//正则匹配url是否包含#respond
+				var reg0 = /^.*[#]comments/;//正则匹配url是否包含#comments
+				var href = $(this).attr('href');
+				if(reg.test(href)){
+					//alert(href);
+					$(this).hide();
+					//$(this).attr('title','评论');
+					//$(this).html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'+' '+ $(this).html());
+				}
+				if(reg0.test(href)){
+					//alert(href);
+					$(this).addClass('comment-c');
+					$(this).attr('title','评论');
+					$(this).html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'+' '+ $(this).html());
+				}
+            });
+			//alert('欢迎光临');
+			
+			/*评论给input和textare添加默认提示*/
+			if($('#commentform').length > 0){
+				$('#comment').attr('placeholder','评论内容');
+				$('#author').attr('placeholder','用户名或姓名');
+				$('#email').attr('placeholder','电子邮件');
+				$('#url').attr('placeholder','个人主页');
+				}
+			if($('.description').length>0){
+				$('.description img').remove();
+				$('.wp-caption-text').remove();
+				}
+			/*评论登录用户显示样式*/
+			if($('.logged-in-as').length > 0){
+				$('.logged-in-as').css({
+					 'margin-bottom':'10px',
+					 'color':'brown'
+					});
+				$('.logged-in-as a').css({
+					 'color':'brown'
+					});
+				$('.logged-in-as a').hover(function(){
+					$(this).css('color','darkcyan');
+					});
+				$('.logged-in-as a').mouseleave(function(){
+					$(this).css({
+					 'color':'brown'
+					});
+					});
+				}
+
+			/*****
+			 *返回顶部，留言，到底部JS代码
+			 *****/
+			//alert($("#comments").offset().top);
+			if($('#comments').length<=0){
+				$('.gocomments').hide();
+			}
+			//alert($('#comments').length<=0);
+			//滚动条滚动的高度，单位px
+			var offset = 600,
+				offset_down = 0,
+				//滚动条滚动到的位置
+				offset_opacity = 1200,
+				//animate动画时间
+				time = 700,
+				//返回顶部、到最底部、到评论的class名称
+				$go_to_top = $('.gotop');
+				$go_to_down = $('.godown');
+				$go_to_comments = $('.gocomments');
+		
+			//显示/隐藏工具条，通过class设置
+			$(window).scroll(function(){
+				( $(this).scrollTop() > offset ) ? $go_to_top.addClass('cd-is-visible') : $go_to_top.removeClass('cd-is-visible cd-fade-out');
+				if( $(this).scrollTop() > offset_opacity ) { 
+					$go_to_top.addClass('cd-fade-out');
+				}
+				( $(this).scrollTop() > offset_down ) ? $go_to_down.addClass('cd-is-visible') : $go_to_down.removeClass('cd-is-visible cd-fade-out');
+				if( $(this).scrollTop() > offset_opacity ) { 
+					$go_to_down.addClass('cd-fade-out');
+				}
+				( $(this).scrollTop() > offset_down ) ? $go_to_comments.addClass('cd-is-visible') : $go_to_comments.removeClass('cd-is-visible cd-fade-out');
+				if( $(this).scrollTop() > offset_opacity ) { 
+					$go_to_comments.addClass('cd-fade-out');
+				}
+			});
+		
+			//返回顶部
+			$go_to_top.on('click', function(event){
+				event.preventDefault();
+				$('body,html').stop().animate({
+					scrollTop: 0 ,
+					}, time
+				);
+			});
+			
+			//滚动到底部
+			$go_to_down.on('click', function(event){
+				event.preventDefault();
+				$('body,html').stop().animate({
+					scrollTop: $(document).height() ,
+					}, time
+				);
+			});
+			
+			//滚动到留言
+			$go_to_comments.on('click', function(event){
+				event.preventDefault();
+				$('body,html').stop().animate({
+					scrollTop: $("#comments").offset().top ,
+					}, time
+				);
+			});
+        });
+        /*$('#sidebar').stickyfloat({ duration: 0 });*/

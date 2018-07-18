@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.egtch.com/archives/513 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	    <meta name="keywords" content="express,mongodb,node,注册,登录,">
+    <meta name="description" content="如果你之前对mysql以及Oracle等关系数据库有过了解的话，那么你mongodb对于你来说上手应该是很快的。但是mongodb并不是使用诸如mysql与Oracle中的select、delete、">
+          <title>  node+express+mongodb注册登录实例 | 明月本无心，行人自回首 - 小小前端</title>
+          <link rel="pingback" href="http://www.egtch.com/xmlrpc.php">
+	<link rel="shortcut icon" href="http://www.egtch.com/wp-content/themes/darkcyan/favicon.ico" type="images/x-icon">
+    <link rel="stylesheet" href="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/style.css">
+    <link rel="stylesheet" href="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/font-awesome.min.css">
+</head>
+<body><header class="fixed-top">
+    <div class="container">
+        <div class="logo"><a href="http://www.egtch.com/">小<small>小</small>前<small>端</small></a></div>
+        <nav>
+            <ul>
+                <li><a href="http://www.egtch.com/"><i class="fa fa-home" aria-hidden="true"></i> 首页</a></li>
+                <li><a href="http://www.egtch.com/about"><i class="fa fa-phone-square" aria-hidden="true"></i> 关于我</a></li>
+                <li><a href="http://www.egtch.com/work/" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 作品</a></li>
+                <li><a href="http://www.egtch.com/minibarcms"><i class="fa fa-coffee" aria-hidden="true"></i> MiniBarCMS</a></li>
+            </ul>
+        </nav>
+        <form method="get" id="searchform" action="http://www.egtch.com/">
+        <input type="text" name="s" id="s" value="" placeholder="Search">
+        <span id="search"><i class="fa fa-search" aria-hidden="true"></i></span>
+        </form>
+        <div class="nav-bars">
+            <a id="nav-show" href="http://www.egtch.com/archives/513#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <a id="nav-close" href="http://www.egtch.com/archives/513#"><i class="fa fa-close" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <div class="load">
+        <div class="top-load" style="display: none;"></div>
+    </div>
+</header>
+    <div class="container">
+
+        <div id="classification" class="sidebar_active" style="top: 8190px;">
+            <a class="img-logo" title="小小前端" href="http://www.egtch.com/"><img src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/logo.png"></a>
+            <h3>栏目导航</h3>
+            <ul class="menu">
+                <li><a href="http://www.egtch.com/archives/category/program">编程技术&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-code" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.egtch.com/archives/category/front">前端开发&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-desktop" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.egtch.com/archives/category/sql">SQL语句&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-database" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.egtch.com/archives/category/linux">Linux&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-linux" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.egtch.com/archives/category/life">生活/旅行&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bicycle" aria-hidden="true"></i></a></li>
+                <li><a href="http://www.egtch.com/archives/category/buytheme">猪蹄&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clone" aria-hidden="true"></i></a></li>
+            </ul>
+            <h3>分类</h3>
+            <!--分类-->
+            <ul class="category">
+                <li><a href="http://www.egtch.com/archives/category/program/javascript">JavaScript</a></li>
+                <li><a href="http://www.egtch.com/archives/category/linux/linux_servers">Linux服务器</a></li>
+                <li><a href="http://www.egtch.com/archives/category/front/jquery">jQuery</a></li>
+                <li><a href="http://www.egtch.com/archives/category/program/java">Java编程</a></li>
+		<li><a href="http://www.egtch.com/archives/category/front/touch/ionic">ionic</a></li>
+                <li><a href="http://www.egtch.com/archives/category/front/html_css">HTML5+CSS3</a></li>
+                <li><a href="http://www.egtch.com/archives/category/program/php">PHP</a></li>
+                <li><a href="http://www.egtch.com/archives/category/linux/linux_notes">Linux笔记</a></li>
+                <li><a href="http://www.egtch.com/archives/category/program/regexp">正则表达式</a></li>
+		<li><a href="http://www.egtch.com/archives/category/program/touch">移动端</a></li>
+		<li><a href="http://www.egtch.com/archives/category/front/vuejs">VUEJS</a></li>
+                <li><a href="http://www.egtch.com/archives/category/front/react">React</a></li>
+            </ul>
+
+        </div>
+        <!--分类end-->        <div id="contents">
+                    <div class="post-content">
+                <h2><a href="http://www.egtch.com/archives/513">node+express+mongodb注册登录实例</a></h2>
+                <div class="info"><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i> 2017/04/19</span><a href="http://www.egtch.com/archives/category/front/nodejs" rel="category tag"><i class="fa fa-caret-right" aria-hidden="true"></i> nodejs</a><span><i class="fa fa-tags" aria-hidden="true"></i> 标签：</span><a href="http://www.egtch.com/archives/tag/express" rel="tag">express</a><a href="http://www.egtch.com/archives/tag/mongodb" rel="tag">mongodb</a><a href="http://www.egtch.com/archives/tag/node" rel="tag">node</a><a href="http://www.egtch.com/archives/tag/%e6%b3%a8%e5%86%8c" rel="tag">注册</a><a href="http://www.egtch.com/archives/tag/%e7%99%bb%e5%bd%95" rel="tag">登录</a><a href="http://www.egtch.com/archives/513#comments" class="comment-c" title="评论"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 1</a><div class="clear"></div></div>
+                <div class="content">
+<!---ADS-->
+<script async="" src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/adsbygoogle.js.下载"></script>
+<!-- BlogAD1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8243351208300995" data-ad-slot="8472054463" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                    <p>如果你之前对mysql以及Oracle等关系数据库有过了解的话，那么你mongodb对于你来说上手应该是很快的。但是mongodb并不是使用诸如mysql与Oracle中的select、delete、update等关键字进行SQL查询的，因为具mongodb官方介绍说，mongodb是一个nosql的数据库，也就是说，他不需要你对sql语句有一定的了解，但是如果你已经了解了sql语句，那么我相信你学习起来是很快的。<br>
+网上已经很多这方面的教程了，为什么我还要在写一次？<br>
+主要是因为我在参照网上的相关例子的时候遇到了不少问题，有些例子要么是express版本低，要么就是代码不完整，因此我才打算写这一篇文章来与大家分享下学习心得。本文仅作为express+mongodb入门教程。使用的express版本为~4.15.2，</p>
+<h2>一、准备工作</h2>
+<p>看到标题就知道应该需要安装些什么软件了吧，我们需要在电脑上安装nodejs和mongodb，而express是nodejs的一个插件，因此需要通过nodejs来进行安装。<br>
+nodejs与mongodb的安装非常的简单，只要你会安装QQ，会安装游戏，那么你就会安装nodejs和mongodb了。不过我们需要注意的是，mongodb安装后，我们需要对其进行相应的设置，以提高我们的开发效率。关于mongodb的使用方法，请大家查看官方的文档。<br>
+安装好了mongodb后，我们给mongodb的bin目录添加到环境变量里面，这样我们就可以直接在命令提示符中直接使用mongodb的命令了，省的还要跑到mongodb目录下输命令。下面是设置mongodb的环境变量的方法。</p>
+<h3>1、mongodb添加环境变量</h3>
+<p>在桌面上，我的电脑（计算机或者此电脑）右键，点击属性，选择左边的“高级系统设置”，在弹出窗口中，选择“高级”，看到右下角有个“环境变量”，点击它。<br>
+之后我们在“系统变量”（不是Administrator的用户变量）中Path中将mongodb的bin目录填写进去，比如我的bin目录是C:\Program Files\MongoDB\Server\3.4\bin。<br>
+然后，打开你的命令提示符窗口，输入mongo,如果看到下面的信息，说明你的设置已经成功了。<span id="more-513"></span></p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer">C<span class="sy0">:</span>\Users\Administrator<span class="sy0">&gt;</span>mongo<br>
+MongoDB shell version v3.4.3<br>
+connecting to<span class="sy0">:</span> mongodb<span class="sy0">:</span><span class="co1">//127.0.0.1:27017</span><br>
+MongoDB server version<span class="sy0">:</span> 3.4.3<br>
+Server has startup warnings<span class="sy0">:</span><br>
+<span class="nu0">2017</span><span class="sy0">-</span>04<span class="sy0">-</span>19T13<span class="sy0">:</span><span class="nu0">51</span><span class="sy0">:</span><span class="nu0">47.704</span><span class="sy0">+</span>0800 I CONTROL &nbsp;<span class="br0">[</span>initandlisten<span class="br0">]</span><br>
+<span class="nu0">2017</span><span class="sy0">-</span>04<span class="sy0">-</span>19T13<span class="sy0">:</span><span class="nu0">51</span><span class="sy0">:</span><span class="nu0">47.704</span><span class="sy0">+</span>0800 I CONTROL &nbsp;<span class="br0">[</span>initandlisten<span class="br0">]</span> <span class="sy0">**</span> WARNING<span class="sy0">:</span> Access control is not enabled <span class="kw1">for</span> the database.<br>
+<span class="nu0">2017</span><span class="sy0">-</span>04<span class="sy0">-</span>19T13<span class="sy0">:</span><span class="nu0">51</span><span class="sy0">:</span><span class="nu0">47.705</span><span class="sy0">+</span>0800 I CONTROL &nbsp;<span class="br0">[</span>initandlisten<span class="br0">]</span> <span class="sy0">**</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Read and write access to data and configuration is unrestricted.<br>
+<span class="nu0">2017</span><span class="sy0">-</span>04<span class="sy0">-</span>19T13<span class="sy0">:</span><span class="nu0">51</span><span class="sy0">:</span><span class="nu0">47.705</span><span class="sy0">+</span>0800 I CONTROL &nbsp;<span class="br0">[</span>initandlisten<span class="br0">]</span></div></div>
+<h3>2、在nodejs中安装express</h3>
+<p>打开nodejs的命令窗口，输入以下命令进行express全局安装<br>
+npm install -g express<br>
+OK，安装会有些慢，如果觉得很慢，请使用taobao的node镜像。完成后，我们就来创建一个express项目吧<br>
+直接使用命令<br>
+express test --view=ejs<br>
+//test就是项目的名称及目录，--ejs则是使用ejs模板引擎，如果不使用--ejs，默认就是jade模板引擎。<br>
+在这里我使用ejs模板引擎，因为它跟html一样，易看易懂，如果你之前使用过asp、jsp的话，那么你一看就懂了，根本不需要再进行多余的学习，如果没有用过，那还是学习下的好，不过这个模板引擎也是非常简单易学的，大部分懂js的或懂一点后端的应该看一下就会了吧。<br>
+项目创建完成，我们需要安装相关的依赖包了<br>
+cd test &amp; npm install<br>
+现在我们已经创建好了test项目了，我们看看项目的目录<br>
+--bin //这个是express服务端的配置文件<br>
+--node_modules //一些依赖的库<br>
+--public //静态文件目录（css、js、images等）<br>
+--views //ejs模板文件（视图）<br>
+--app.js //express配置文件<br>
+--package.json //项目信息及依赖库的json信息<br>
+到此，项目创建完成了。下面我们需要与mongodb进行相关的链接，那就必须得安装一个mongoose的依赖库，直接使用命令<br>
+npm install mongoose --save<br>
+这样就安装成功了。下面我们正式进入express+mongoose+mongodb的数据库操作吧。</p>
+<blockquote><p>重要部分来了：由于express与nodejs一起使用，无法实现热加载（所谓热加载就是无需重启node来刷新页面），因此我们需要另一个插件hotnode，使用hotnode可以让我们更好的调试代码与测试代码。hotnode可以全局安装，也可以依赖安装，我这里使用全局安装，使用npm install -g hotnode</p></blockquote>
+<h2>二、express+mongodb+mongoose链接数据库</h2>
+<h3>1、使用mongodb创建一个数据库</h3>
+<p>首先在命令提示符中输入如下命令来指定数据库存储的文件夹<br>
+mongod --dbpath H:\DB<br>
+这个H:\DB，你自己设置成你想要的目录即可<br>
+设置好了以后，我们需要再开启一个命令提示符窗口，直接使用mongo命令就可以看到已经链接上了本地上的db目录了。<br>
+下面我们就来创建一个数据库，使用use命令<br>
+use test //如果数据库不存在则会自动创建一个名为test的数据库<br>
+我们再创建一个数据库表为user,并且添加一个admin用户<br>
+db.user.insert({name:'admin',password:'password'});<br>
+查看数据库信息，请使用find<br>
+db.user.find()<br>
+是不是很简单啊。<br>
+至此，我们需要将以上mogodb的两个窗口都保留，这样才能保证我们后面的步骤。关闭后则数据库连接就断了。当然你也可以将其注册成为windows的一个服务，相关命令请自行google.</p>
+<h3>2、连接到test数据库</h3>
+<p>打开app.js<br>
+添加如下代码测试数据库链接是否成功：</p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer"><span class="coMULTI">/*引入mongoose链接数据库*/</span><br>
+<span class="kw1">var</span> mongoose <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'mongoose'</span><span class="br0">)</span><span class="sy0">;</span><br>
+mongoose.<span class="me1">connect</span><span class="br0">(</span><span class="st0">'mongodb://localhost/one'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> db <span class="sy0">=</span> mongoose.<span class="me1">connection</span><span class="sy0">;</span><br>
+db.<span class="me1">on</span><span class="br0">(</span><span class="st0">'error'</span><span class="sy0">,</span> console.<span class="me1">error</span>.<span class="me1">bind</span><span class="br0">(</span>console<span class="sy0">,</span> <span class="st0">'connection error:'</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span><br>
+db.<span class="me1">once</span><span class="br0">(</span><span class="st0">'open'</span><span class="sy0">,</span> <span class="kw1">function</span><span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">(</span><span class="st0">'链接成功了'</span><span class="br0">)</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span></div></div>
+<p>现在我们就可以测试下数据库连接是否成功了。使用hotnode的命令启动服务<br>
+hotnode ./bin/www<br>
+当在命令提示符中看到“连接成功了”，那么就说明了我们已经链接了数据库了。</p>
+<h2>三、使用bootstrap与express的router创建登录与注册</h2>
+<p>首先下载bootstrap3与jQuery，将css文件放到public/stylesheets目录下，将js文件及jQuery文件放到javascripts目录下，另外bootstrap是需要自提支持的，因此直接将bootstrap的fonts目录直接拷贝到public目录下即可。</p>
+<h3>1、修改views目录下index.ejs文件</h3>
+<div class="codecolorer-container html4strict default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="html4strict codecolorer"><span class="sc2">&lt;% include header.ejs %&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"index"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"container"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">h1</span>&gt;&lt;%<span class="sy0">=</span> <span class="kw3">title</span> %&gt;&lt;<span class="sy0">/</span><span class="kw2">h1</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"form"</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">"/home"</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">"post"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">span</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group-addon"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"sizing-addon1"</span>&gt;</span>USERNAME<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"text"</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"name"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"form-control"</span> placeholder<span class="sy0">=</span><span class="st0">"用户名"</span> aria-describedby<span class="sy0">=</span><span class="st0">"sizing-addon1"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"name"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">span</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group-addon"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"sizing-addon2"</span>&gt;</span>PASSWORD<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"password"</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"password"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"form-control"</span> placeholder<span class="sy0">=</span><span class="st0">"密码"</span> aria-describedby<span class="sy0">=</span><span class="st0">"sizing-addon2"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"password"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">a</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">"/register"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"btn btn-warning reg"</span>&gt;</span>注册<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">a</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"submit"</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"submit"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"btn btn-primary login"</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">"登录"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+<span class="sc2">&lt;% include footer.ejs %&gt;</span></div></div>
+<p>看到了吧，如果你懂jsp，那么你就能看懂上面的代码了，很简单的，当然懂JavaScript也能很容易看懂以上代码，只不过代码中的include可能就不太了解了，include是引入一个文件，然后我们来建立header.ejs和footer.ejs，让他们两个文件可以进行重用</p>
+<h3>2、header.ejs文件内容</h3>
+<div class="codecolorer-container html4strict default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="html4strict codecolorer">&lt;!DOCTYPE html&gt;<br>
+&lt;<span class="kw2">html</span>&gt;<br>
+&lt;<span class="kw2">head</span>&gt;<br>
+&nbsp; &nbsp; &lt;<span class="kw2">title</span>&gt;&lt;%<span class="sy0">=</span> <span class="kw3">title</span> %&gt;&lt;<span class="sy0">/</span><span class="kw2">title</span>&gt;<br>
+&nbsp; &nbsp; &lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">'stylesheet'</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">'/stylesheets/bootstrap.min.css'</span> <span class="sy0">/</span>&gt;<br>
+&nbsp; &nbsp; &lt;<span class="kw2">link</span> <span class="kw3">rel</span><span class="sy0">=</span><span class="st0">'stylesheet'</span> <span class="kw3">href</span><span class="sy0">=</span><span class="st0">'/stylesheets/style.css'</span> <span class="sy0">/</span>&gt;<br>
+&lt;<span class="sy0">/</span><span class="kw2">head</span>&gt;<br>
+&lt;<span class="kw2">body</span>&gt;</div></div>
+<h3>3、footer.ejs</h3>
+<div class="codecolorer-container html4strict default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="html4strict codecolorer">&nbsp; &nbsp; &lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">"/javascripts/jquery-3.2.1.min.js"</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;<br>
+&nbsp; &nbsp; &lt;<span class="kw2">script</span> <span class="kw3">src</span><span class="sy0">=</span><span class="st0">"/javascripts/bootstrap.min.js"</span>&gt;&lt;<span class="sy0">/</span><span class="kw2">script</span>&gt;<br>
+&nbsp; &lt;<span class="sy0">/</span><span class="kw2">body</span>&gt;<br>
+&lt;<span class="sy0">/</span><span class="kw2">html</span>&gt;</div></div>
+<h3>4、修改routers/index.js</h3>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer"><span class="st0">'use strict'</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> express <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'express'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> router <span class="sy0">=</span> express.<span class="me1">Router</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<span class="coMULTI">/* GET home page. */</span><br>
+router.<span class="kw1">get</span><span class="br0">(</span><span class="st0">'/'</span><span class="sy0">,</span> <span class="kw1">function</span><span class="br0">(</span>req<span class="sy0">,</span> res<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'index'</span><span class="sy0">,</span> <span class="br0">{</span> title<span class="sy0">:</span> <span class="st0">'后台登录'</span> <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<br>
+module.<span class="me1">exports</span> <span class="sy0">=</span> router<span class="sy0">;</span></div></div>
+<p>路由为我们创建了第一个页面，并传递一个title参数。</p>
+<h3>5、修改public/stylesheets/style.css</h3>
+<div class="codecolorer-container css default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="css codecolorer"><span class="re1">.index</span> <span class="br0">{</span><br>
+&nbsp; <span class="kw1">width</span><span class="sy0">:</span> <span class="re3">80%</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">position</span><span class="sy0">:</span> <span class="kw2">absolute</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">top</span><span class="sy0">:</span> <span class="re3">50%</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">left</span><span class="sy0">:</span> <span class="re3">50%</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">transform</span><span class="sy0">:</span> <span class="kw3">translate</span><span class="br0">(</span><span class="re3">-50%</span><span class="sy0">,</span> <span class="re3">-50%</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="re1">.index</span> h1 <span class="br0">{</span><br>
+&nbsp; <span class="kw1">text-align</span><span class="sy0">:</span> <span class="kw2">center</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">color</span><span class="sy0">:</span> <span class="re0">#333</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">border-bottom</span><span class="sy0">:</span> <span class="re3">1px</span> <span class="re0">#eee</span> <span class="kw2">solid</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">padding-bottom</span><span class="sy0">:</span> <span class="re3">10px</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="re1">.index</span> <span class="re1">.container</span> <span class="br0">{</span><br>
+&nbsp; <span class="kw1">width</span><span class="sy0">:</span> <span class="re3">400px</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">background</span><span class="sy0">:</span> <span class="re0">#fff</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">border-radius</span><span class="sy0">:</span> <span class="re3">6px</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">padding</span><span class="sy0">:</span> <span class="re3">10px</span><span class="sy0">;</span><br>
+&nbsp; <span class="kw1">box-shadow</span><span class="sy0">:</span> <span class="nu0">0</span> <span class="nu0">0</span> <span class="re3">8px</span> <span class="re0">#ccc</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="re1">.index</span> <span class="re1">.container</span> <span class="re1">.input-group</span> <span class="br0">{</span><br>
+&nbsp; <span class="kw1">margin</span><span class="sy0">:</span> <span class="re3">20px</span> <span class="kw2">auto</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="re1">.index</span> <span class="re1">.container</span> <span class="re1">.login</span> <span class="br0">{</span><br>
+&nbsp; <span class="kw1">float</span><span class="sy0">:</span> <span class="kw2">right</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="re1">.index</span> <span class="re1">.container</span> <span class="re1">.reg</span> <span class="br0">{</span><br>
+&nbsp; <span class="kw1">float</span><span class="sy0">:</span> <span class="kw2">left</span><span class="sy0">;</span><br>
+<span class="br0">}</span></div></div>
+<p>OK，现在我们可以看看浏览器中所显示的状况了，如果你没有操作错误的话，你应该看到如下图一样的效果：<br>
+</p><div id="attachment_515" class="wp-caption aligncenter" style="width: 100%; text-align: center;"><a href="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419224806.png"><img src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419224806.png" alt="express+mogondb登录" class="size-full wp-image-515"></a><p class="wp-caption-text">express+mogondb登录</p></div><p></p>
+<h3>6、新建user.js</h3>
+<p>在test目录下创建一个model文件夹，并新建一个user.js的文件，内容如下：</p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer"><span class="coMULTI">/**<br>
+&nbsp;* Created by egtch.com on 2017/4/18.<br>
+&nbsp;*/</span><br>
+<span class="kw1">var</span> mongoose <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'mongoose'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<span class="kw1">var</span> UserSchema <span class="sy0">=</span> <span class="kw1">new</span> mongoose.<span class="me1">Schema</span><span class="br0">(</span><span class="br0">{</span><br>
+&nbsp; &nbsp; name<span class="sy0">:</span> <span class="kw4">String</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; password<span class="sy0">:</span> <span class="kw4">String</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+module.<span class="me1">exports</span> <span class="sy0">=</span> mongoose.<span class="me1">model</span><span class="br0">(</span><span class="st0">'user'</span><span class="sy0">,</span> UserSchema<span class="sy0">,</span><span class="st0">'user'</span><span class="br0">)</span><span class="sy0">;</span></div></div>
+<p>以上代码主要是创建一个数据模型对应于数据库内容，这个数据库模型就相当于java中的javabeans。我们需要注意的是最后一行，mongoose.model('user', UserSchema,'user')，这里面的最后一个参数'user'就是我们创建的test数据库下面的user表的名称。如果不填写这个参数，后面我们可能将无法获取到user中的数据，当然后面你也可以直接使用for循环来循环，但是如果数据量太大，我相信for肯定不会那么好使了。<br>
+下面是非常重要的两个步骤，我都对代码进行了注释，大家一定要好好看。</p>
+<h3>7、编写注册页面（注册的密码通过MD5加密）</h3>
+<p>在views下新建register.ejs</p>
+<div class="codecolorer-container html4strict default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="html4strict codecolorer"><span class="sc2">&lt;% include header.ejs %&gt;</span><br>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"index"</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"container"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">h1</span>&gt;&lt;%<span class="sy0">=</span> <span class="kw3">title</span> %&gt;&lt;<span class="sy0">/</span><span class="kw2">h1</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">form</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"form"</span> <span class="kw3">action</span><span class="sy0">=</span><span class="st0">"/register_suc"</span> <span class="kw3">method</span><span class="sy0">=</span><span class="st0">"post"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">span</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group-addon"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"sizing-addon1"</span>&gt;</span>USERNAME<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"text"</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"name"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"form-control"</span> placeholder<span class="sy0">=</span><span class="st0">"用户名"</span> aria-describedby<span class="sy0">=</span><span class="st0">"sizing-addon1"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"name"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">span</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"input-group-addon"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"sizing-addon2"</span>&gt;</span>PASSWORD<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">span</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"password"</span> <span class="kw3">name</span><span class="sy0">=</span><span class="st0">"password"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"form-control"</span> placeholder<span class="sy0">=</span><span class="st0">"密码"</span> aria-describedby<span class="sy0">=</span><span class="st0">"sizing-addon2"</span> <span class="kw3">id</span><span class="sy0">=</span><span class="st0">"password"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">input</span> <span class="kw3">type</span><span class="sy0">=</span><span class="st0">"submit"</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"btn btn-primary login"</span> <span class="kw3">value</span><span class="sy0">=</span><span class="st0">"注册"</span> &gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">form</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+<span class="sc2">&lt;% include footer.ejs %&gt;</span></div></div>
+<p>然后在routers下建立register.js</p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer"><span class="st0">'use strict'</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> express <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'express'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> router <span class="sy0">=</span> express.<span class="me1">Router</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<span class="coMULTI">/* GET home page. */</span><br>
+router.<span class="kw1">get</span><span class="br0">(</span><span class="st0">'/'</span><span class="sy0">,</span> <span class="kw1">function</span><span class="br0">(</span>req<span class="sy0">,</span> res<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'register'</span><span class="sy0">,</span> <span class="br0">{</span> title<span class="sy0">:</span> <span class="st0">'用户注册'</span> <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<br>
+module.<span class="me1">exports</span> <span class="sy0">=</span> router<span class="sy0">;</span></div></div>
+<p>我们已经完成了注册页面了，下面就是与数据库对接了。<br>
+在routers目录下新建register_suc.js<br>
+register_suc.ejs</p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer"><span class="st0">'use strict'</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> express <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'express'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> router <span class="sy0">=</span> express.<span class="me1">Router</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> mongoose <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'mongoose'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> user <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'../model/user'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="coMULTI">/*导入node的加密库*/</span><br>
+<span class="kw1">var</span> crypto <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'crypto'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<span class="coMULTI">/* GET home page. */</span><br>
+router.<span class="me1">post</span><span class="br0">(</span><span class="st0">'/'</span><span class="sy0">,</span> <span class="kw1">function</span><span class="br0">(</span>req<span class="sy0">,</span> res<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> md5 <span class="sy0">=</span> crypto.<span class="me1">createHash</span><span class="br0">(</span><span class="st0">'md5'</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> name <span class="sy0">=</span> req.<span class="me1">body</span>.<span class="me1">name</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> password <span class="sy0">=</span> req.<span class="me1">body</span>.<span class="me1">password</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">if</span><span class="br0">(</span>name<span class="sy0">===</span><span class="st0">''</span> <span class="sy0">&amp;&amp;</span> name.<span class="me1">length</span><span class="sy0">&lt;=</span><span class="nu0">0</span> <span class="sy0">&amp;&amp;</span> password<span class="sy0">===</span><span class="st0">''</span> <span class="sy0">&amp;&amp;</span> password.<span class="me1">length</span><span class="sy0">&lt;=</span><span class="nu0">0</span><span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'register_suc.ejs'</span><span class="sy0">,</span> <span class="br0">{</span>title<span class="sy0">:</span> <span class="st0">'用户名或密码不能为空'</span><span class="sy0">,</span> name<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span> password<span class="sy0">:</span> <span class="st0">''</span><span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="kw1">else</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="coMULTI">/*MD5加密密码*/</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; md5.<span class="me1">update</span><span class="br0">(</span>password <span class="sy0">+</span> name<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">var</span> pwd <span class="sy0">=</span> md5.<span class="me1">digest</span><span class="br0">(</span><span class="st0">'base64'</span><span class="br0">)</span><span class="sy0">;</span><span class="co1">//将加密后的md5密码使用base64加密</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//使用findOne查询数据库中是否存在相同的用户名，如果存在则提示更换用户名，否则将内容写入数据库</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; user.<span class="me1">findOne</span><span class="br0">(</span><span class="br0">{</span>name<span class="sy0">:</span> name<span class="br0">}</span><span class="sy0">,</span> <span class="kw1">function</span> <span class="br0">(</span>err<span class="sy0">,</span> doc<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>err<span class="br0">)</span> <span class="kw1">return</span> next<span class="br0">(</span>err<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//查询数据库是否有相同的用户名，假如存在则提示注册失败</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>doc<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'register_suc.ejs'</span><span class="sy0">,</span> <span class="br0">{</span>title<span class="sy0">:</span> <span class="st0">'用户名已经存在，请更换'</span><span class="sy0">,</span> name<span class="sy0">:</span> <span class="st0">''</span><span class="sy0">,</span> password<span class="sy0">:</span> <span class="st0">''</span><span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="coMULTI">/*var usernow =new user({name:name,password:pwd});<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//如果用户名不存在，则将当前用户名和密码保存到数据库<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;usernow.save();<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res.render('register_suc.ejs', { title: '注册成功',name:name,password:pwd });*/</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; user.<span class="me1">create</span><span class="br0">(</span><span class="br0">{</span> <span class="co1">// 创建一组user对象置入model</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name<span class="sy0">:</span> name<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; password<span class="sy0">:</span> pwd<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><span class="sy0">,</span> <span class="kw1">function</span> <span class="br0">(</span>err<span class="sy0">,</span> doc<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>err<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">send</span><span class="br0">(</span><span class="nu0">500</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; console.<span class="me1">log</span><span class="br0">(</span>err<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'register_suc.ejs'</span><span class="sy0">,</span> <span class="br0">{</span>title<span class="sy0">:</span> <span class="st0">'注册成功'</span><span class="sy0">,</span> name<span class="sy0">:</span> name<span class="sy0">,</span> password<span class="sy0">:</span> pwd<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1">//res.send(200);</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+<br>
+module.<span class="me1">exports</span> <span class="sy0">=</span> router<span class="sy0">;</span></div></div>
+<p>在views目录下新建一个register_suc.ejs</p>
+<div class="codecolorer-container html4strict default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="html4strict codecolorer"><span class="sc2">&lt;% include header.ejs %&gt;</span><br>
+<span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"index"</span>&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"container"</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;<span class="kw2">h1</span>&gt;&lt;%<span class="sy0">=</span> <span class="kw3">title</span> %&gt;&lt;<span class="sy0">/</span><span class="kw2">h1</span>&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;%if<span class="br0">(</span><span class="kw3">name</span>!<span class="sy0">=</span><span class="st0">''</span> &amp;&amp; password !<span class="sy0">=</span> <span class="st0">''</span><span class="br0">)</span><span class="br0">{</span>%&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; 用户名：<span class="sc2">&lt;%<span class="sy0">=</span>name%&gt;&lt;<span class="kw2">br</span>&gt;</span>密码：<span class="sc2">&lt;%<span class="sy0">=</span>password%&gt;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="sc2">&lt;%<span class="br0">}</span>%&gt;</span><br>
+&nbsp; &nbsp; <span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+<span class="sc2">&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;</span><br>
+<span class="sc2">&lt;% include footer.ejs %&gt;</span></div></div>
+<p>到这里还没有完哦，我们建立了router后，必须要在app.js中加入router，否则将无法实现router功能，打开app.js，增加以下内容<br>
+var register = require('./routes/register');<br>
+var register_suc = require('./routes/register_suc');<br>
+app.use('/register', register);<br>
+app.use('/register_suc', register_suc);<br>
+OK，现在我们就可以看看效果了，http://localhost:3000/register，可以看到如下画面<br>
+</p><div id="attachment_516" class="wp-caption aligncenter" style="width: 100%; text-align: center;"><a href="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419232550.png"><img src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419232550.png" alt="express+mongodb注册" class="size-full wp-image-516"></a><p class="wp-caption-text">express+mongodb注册</p></div><br>
+你试着输入用户名和密码，然后点击注册看看，是否会出现如下画面,如果出现了那恭喜你，你离成功越来越近了：<div id="attachment_517" class="wp-caption aligncenter" style="width: 100%; text-align: center;"><a href="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419232753.png"><img src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419232753.png" alt="express+mongodb注册" class="size-full wp-image-517"></a><p class="wp-caption-text">express+mongodb注册</p></div><br>
+注册功能实现了，下面我们就实现下登录功能吧<p></p>
+<h3>8、编写登录页面</h3>
+<p>首先我们的在views下新建一个home.ejs来显示登录成功后的用户名<br>
+home.ejs</p>
+<div class="codecolorer-container html4strict default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="html4strict codecolorer">&lt;% include header.ejs %&gt;<br>
+&lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"index"</span>&gt;<br>
+&nbsp; &nbsp; &lt;<span class="kw2">div</span> <span class="kw3">class</span><span class="sy0">=</span><span class="st0">"container"</span>&gt;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;<span class="kw2">h1</span>&gt;&lt;%<span class="sy0">=</span> <span class="kw3">title</span> %&gt;&lt;<span class="sy0">/</span><span class="kw2">h1</span>&gt;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;%if<span class="br0">(</span><span class="kw3">name</span> !<span class="sy0">=</span><span class="st0">''</span> &amp;&amp; <span class="kw3">name</span>.length&gt;<span class="nu0">0</span><span class="br0">)</span><span class="br0">{</span>%&gt;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;%<span class="sy0">=</span>name%&gt;<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;%<span class="br0">}</span>%&gt;<br>
+&nbsp; &nbsp; &lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;<br>
+&lt;<span class="sy0">/</span><span class="kw2">div</span>&gt;<br>
+&lt;% include footer.ejs %&gt;</div></div>
+<p>然后我们需要配置home的路由，因此我们还需要在routers目录下新建一个home.js的文件<br>
+home.js</p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:98%;"><div class="javascript codecolorer"><span class="st0">'use strict'</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> express <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'express'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> router <span class="sy0">=</span> express.<span class="me1">Router</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> mongoose <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'mongoose'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="kw1">var</span> user <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'../model/user'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="coMULTI">/*导入node的加密库*/</span><br>
+<span class="kw1">var</span> crypto <span class="sy0">=</span> require<span class="br0">(</span><span class="st0">'crypto'</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="coMULTI">/* 创建路由，并使用post接受index传递过来的name和password */</span><br>
+router.<span class="me1">post</span><span class="br0">(</span><span class="st0">'/'</span><span class="sy0">,</span> <span class="kw1">function</span><span class="br0">(</span>req<span class="sy0">,</span> res<span class="sy0">,</span> next<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> md5 <span class="sy0">=</span> crypto.<span class="me1">createHash</span><span class="br0">(</span><span class="st0">'md5'</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> password <span class="sy0">=</span> req.<span class="me1">body</span>.<span class="me1">password</span><span class="sy0">;</span><span class="co1">//获得传递过来的password</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> name <span class="sy0">=</span> req.<span class="me1">body</span>.<span class="me1">name</span><span class="sy0">;</span><span class="co1">//获得传递过来的name</span><br>
+&nbsp; &nbsp; md5.<span class="me1">update</span><span class="br0">(</span>password<span class="sy0">+</span>name<span class="br0">)</span><span class="sy0">;</span><span class="co1">//MD5混淆加密内容为password+name</span><br>
+&nbsp; &nbsp; <span class="kw1">var</span> pwd <span class="sy0">=</span> md5.<span class="me1">digest</span><span class="br0">(</span><span class="st0">'base64'</span><span class="br0">)</span><span class="sy0">;</span><span class="co1">//将加密好的MD5以base64的形式展现出来</span><br>
+&nbsp; &nbsp; <span class="kw1">if</span><span class="br0">(</span>pwd<span class="sy0">===</span><span class="st0">''</span> <span class="sy0">&amp;&amp;</span> name <span class="sy0">===</span><span class="st0">''</span><span class="br0">)</span><span class="br0">{</span><span class="co1">//假如传递过来的name和password为空</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'home'</span><span class="sy0">,</span> <span class="br0">{</span> title<span class="sy0">:</span> <span class="st0">'发生错误'</span><span class="sy0">,</span>name<span class="sy0">:</span><span class="st0">'请输入用户名和密码'</span> <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><span class="co1">//路由则传递相关错误信息</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><br>
+&nbsp; &nbsp; <span class="co1">//console.log(pwd+' '+name);</span><br>
+&nbsp; &nbsp; <span class="coMULTI">/* 查询数据库中的name与password是否与用户输入的一致，使用findOne({},callback)方法 */</span><br>
+&nbsp; &nbsp; user.<span class="me1">findOne</span><span class="br0">(</span><span class="br0">{</span> name<span class="sy0">:</span>name<span class="sy0">,</span>password<span class="sy0">:</span>pwd <span class="br0">}</span><span class="sy0">,</span><span class="kw1">function</span> <span class="br0">(</span>err<span class="sy0">,</span> doc<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">(</span>err<span class="br0">)</span> <span class="kw1">return</span> next<span class="br0">(</span>err<span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span><span class="br0">(</span>doc<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'home'</span><span class="sy0">,</span> <span class="br0">{</span> title<span class="sy0">:</span> <span class="st0">'登录成功'</span><span class="sy0">,</span>name<span class="sy0">:</span>name <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><span class="kw1">else</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res.<span class="me1">render</span><span class="br0">(</span><span class="st0">'home'</span><span class="sy0">,</span><span class="br0">{</span>title<span class="sy0">:</span><span class="st0">'发生错误'</span><span class="sy0">,</span>name<span class="sy0">:</span><span class="st0">'请检查您的用户名及密码'</span><span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="br0">}</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<br>
+module.<span class="me1">exports</span> <span class="sy0">=</span> router<span class="sy0">;</span></div></div>
+<p>终于完成了，下面我们就直接打开http://localhost:3000进行登录吧，记得之前我们创建的admin的密码是未进行加密的，因此在这里直接使用admin登录是不可行的，因为其密码与加密后的密码不一致，因此你不必为此劳心费神，追求完美。<br>
+我们输入之前我们注册的egtch.com的用户名，再输入密码来进行登录，即可登录成功。如图：<br>
+</p><div id="attachment_519" class="wp-caption aligncenter" style="width: 100%; text-align: center;"><a href="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419233608.png"><img src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/20170419233608.png" alt="express+mongodb登录" class="size-full wp-image-519"></a><p class="wp-caption-text">express+mongodb登录</p></div><p></p>
+                    <div class="like-article clearfix">
+                    <h3>您可能还会对这些文章感兴趣！</h3>
+                    	<ul>
+                        							  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="http://www.egtch.com/archives/739" rel="bookmark" title="NodeJS addons 中文乱码处理">NodeJS addons 中文乱码处理</a></li>
+														  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="http://www.egtch.com/archives/679" rel="bookmark" title="利用nodeJS发送邮件">利用nodeJS发送邮件</a></li>
+														  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="http://www.egtch.com/archives/676" rel="bookmark" title="使用webpack配置ES6开发环境">使用webpack配置ES6开发环境</a></li>
+														  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="http://www.egtch.com/archives/549" rel="bookmark" title="使用express+mysql实现分页效果">使用express+mysql实现分页效果</a></li>
+														  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="http://www.egtch.com/archives/534" rel="bookmark" title="mongodb中模糊查询">mongodb中模糊查询</a></li>
+														  <li><i class="fa fa-angle-double-right" aria-hidden="true"></i> <a href="http://www.egtch.com/archives/524" rel="bookmark" title="node+express图片上传实例">node+express图片上传实例</a></li>
+							                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                
+			<div id="comments">
+
+
+			<h3 id="comments-title">评论 关于 <em>node+express+mongodb注册登录实例</em></h3>
+
+
+			<ol class="commentlist">
+					<li class="comment even thread-even depth-1" id="li-comment-78">
+		<div id="comment-78">
+			<div class="comment-author vcard">
+				<cite class="fn">jie</cite> <span class="says">says:</span>			</div><!-- .comment-author .vcard -->
+			
+			<div class="comment-meta commentmetadata"><a href="http://www.egtch.com/archives/513#comment-78">
+				2017年8月2日 at 上午10:58</a>			</div><!-- .comment-meta .commentmetadata -->
+
+			<div class="comment-body"><p>少写了home路由，到app.js里面</p>
+</div>
+
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="http://www.egtch.com/archives/513?replytocom=78#respond" onclick="return addComment.moveForm( &quot;comment-78&quot;, &quot;78&quot;, &quot;respond&quot;, &quot;513&quot; )" aria-label="回复给jie">回复</a>			</div><!-- .reply -->
+		</div><!-- #comment-##  -->
+
+	</li><!-- #comment-## -->
+			</ol>
+
+
+	
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.egtch.com/archives/513#respond" style="display:none;">取消回复</a></small></h3>			<form action="http://www.egtch.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span> 必填项已用<span class="required">*</span>标注</p><p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" placeholder="评论内容"></textarea></p><p class="comment-form-author"><label for="author">姓名 <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required="required" placeholder="用户名或姓名"></p>
+<p class="comment-form-email"><label for="email">电子邮件 <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required" placeholder="电子邮件"></p>
+<p class="comment-form-url"><label for="url">站点</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" placeholder="个人主页"></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"><label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<input type="text" name="sum" class="math_textfield" value="" size="25" tabindex="4" placeholder="请填写右边计算结果"> <strong>53 + 6 = ?</strong><input type="hidden" name="num1" value="53"><input type="hidden" name="num2" value="6"><label for="math" class="small"> 请输入评论验证码</label><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="发表评论"> <input type="hidden" name="comment_post_ID" value="513" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="d31cd595e2"></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="117"></p>			</form>
+			</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank">Learn how your comment data is processed</a>.</p>
+</div><!-- #comments -->
+            </div>
+            				            
+            <!--footer-->
+            <footer>
+	CopyRight© 2015-2018 <a href="http://www.egtch.com/">egtch.com</a>. Template '<a href="http://www.egtch.com/archives/category/buytheme">DarkCyan</a>' design by <a href="http://www.egtch.com/about">深夜徘徊</a> | <script language="javascript" type="text/javascript" src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/19097822.js.下载"></script><a href="https://www.51.la/?comId=19097822" title="51.La 网站流量统计系统" target="_blank"><span style="display:inline-block;background-color:;color:#fff;padding:2px 5px;font-family:arial;font-size:12px;font-weight:bold;">51La</span></a> | <a href="http://www.egtch.com/xmlsitemap.xml">XML SITEMAP</a>
+</footer>
+<div class="mtool">
+	<a class="gotop cd-is-visible cd-fade-out" href="http://www.egtch.com/archives/513#"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+	<a class="gocomments cd-is-visible cd-fade-out" href="http://www.egtch.com/archives/513#"><i class="fa fa-comments" aria-hidden="true"></i></a>
+	<a class="godown cd-is-visible cd-fade-out" href="http://www.egtch.com/archives/513#"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+</div>
+            <!--footer end-->
+        </div>
+        <div id="sidebar">
+            <h3><i class="fa fa-calendar-check-o" aria-hidden="true"></i> 最新文章</h3>
+            <ul class="atr-title">
+			<li><a href="http://www.egtch.com/archives/796">angular2+数据更新但视图不更新的解决方法</a></li><li><a href="http://www.egtch.com/archives/783">关于混合APP横屏、竖屏、翻转的解决方案</a></li><li><a href="http://www.egtch.com/archives/780">解决ionic3错误：No provider for NavController</a></li><li><a href="http://www.egtch.com/archives/764">Java Spring-Boot开发环境配置</a></li><li><a href="http://www.egtch.com/archives/758">JavaScript如何判断对象是否为空</a></li><li><a href="http://www.egtch.com/archives/754">JavaScript将有相同内容的数组或对象的值进行累加</a></li><li><a href="http://www.egtch.com/archives/750">彻底关闭ubuntu提示“检测到系统程序出现问题”</a></li><li><a href="http://www.egtch.com/archives/744">cordova-ios4.5.x与xcode打包中遇到Error code 65 for command的解决办法</a></li>            </ul>
+            <h3><i class="fa fa-fire" aria-hidden="true"></i> 热评文章</h3>
+            <ul class="atr-title">
+             
+				<li><a href="http://www.egtch.com/archives/1">世界，你好！</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/721">解决iPhone X上无法全屏的问题</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/157">利用Cordova，jqurey与wp-rest-api制作一个属于自己博客的移动APP</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/664">使用css设置打印</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/605">ionic中使用热更新插件cordova-hot-code-push</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/734">Cordova打安卓包报错ionic Error: spawn EACCES</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/639">那些苦逼的日子</a></li> 
+				 
+				<li><a href="http://www.egtch.com/archives/513">node+express+mongodb注册登录实例</a></li> 
+				 
+            </ul>
+            <h3><i class="fa fa-calendar-check-o" aria-hidden="true"></i> 文章日历归档</h3>
+            <table id="wp-calendar">
+	<caption>2018年六月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+		<th scope="col" title="星期日">日</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://www.egtch.com/archives/date/2018/05">« 5月</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td>
+	</tr>
+	<tr>
+		<td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+	</tr>
+	<tr>
+		<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+	</tr>
+	<tr>
+		<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+	</tr>
+	<tr>
+		<td>25</td><td>26</td><td id="today">27</td><td>28</td><td>29</td><td>30</td>
+		<td class="pad" colspan="1">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>            <h3 id="tags_h3"><i class="fa fa-tags" aria-hidden="true"></i> TAGS</h3>
+            <div class="tags clearfix">
+                <a href="http://www.egtch.com/archives/tag/android" class="tag-cloud-link tag-link-237 tag-link-position-1" aria-label="Android (4个项目)">Android</a>
+<a href="http://www.egtch.com/archives/tag/angular" class="tag-cloud-link tag-link-201 tag-link-position-2" aria-label="Angular (8个项目)">Angular</a>
+<a href="http://www.egtch.com/archives/tag/app" class="tag-cloud-link tag-link-89 tag-link-position-3" aria-label="APP (3个项目)">APP</a>
+<a href="http://www.egtch.com/archives/tag/cordova" class="tag-cloud-link tag-link-87 tag-link-position-4" aria-label="Cordova (7个项目)">Cordova</a>
+<a href="http://www.egtch.com/archives/tag/css" class="tag-cloud-link tag-link-18 tag-link-position-5" aria-label="CSS (6个项目)">CSS</a>
+<a href="http://www.egtch.com/archives/tag/express" class="tag-cloud-link tag-link-206 tag-link-position-6" aria-label="express (3个项目)">express</a>
+<a href="http://www.egtch.com/archives/tag/ionic" class="tag-cloud-link tag-link-198 tag-link-position-7" aria-label="ionic (16个项目)">ionic</a>
+<a href="http://www.egtch.com/archives/tag/java" class="tag-cloud-link tag-link-39 tag-link-position-8" aria-label="Java (10个项目)">Java</a>
+<a href="http://www.egtch.com/archives/tag/javascript" class="tag-cloud-link tag-link-62 tag-link-position-9" aria-label="javascript (20个项目)">javascript</a>
+<a href="http://www.egtch.com/archives/tag/jquery" class="tag-cloud-link tag-link-34 tag-link-position-10" aria-label="jQuery (8个项目)">jQuery</a>
+<a href="http://www.egtch.com/archives/tag/linux" class="tag-cloud-link tag-link-42 tag-link-position-11" aria-label="Linux (4个项目)">Linux</a>
+<a href="http://www.egtch.com/archives/tag/loading" class="tag-cloud-link tag-link-35 tag-link-position-12" aria-label="loading (2个项目)">loading</a>
+<a href="http://www.egtch.com/archives/tag/mysql" class="tag-cloud-link tag-link-28 tag-link-position-13" aria-label="MySQL (7个项目)">MySQL</a>
+<a href="http://www.egtch.com/archives/tag/node" class="tag-cloud-link tag-link-185 tag-link-position-14" aria-label="node (4个项目)">node</a>
+<a href="http://www.egtch.com/archives/tag/php" class="tag-cloud-link tag-link-46 tag-link-position-15" aria-label="PHP (8个项目)">PHP</a>
+<a href="http://www.egtch.com/archives/tag/react" class="tag-cloud-link tag-link-183 tag-link-position-16" aria-label="react (3个项目)">react</a>
+<a href="http://www.egtch.com/archives/tag/sql" class="tag-cloud-link tag-link-44 tag-link-position-17" aria-label="SQL (3个项目)">SQL</a>
+<a href="http://www.egtch.com/archives/tag/vue" class="tag-cloud-link tag-link-168 tag-link-position-18" aria-label="vue (5个项目)">vue</a>
+<a href="http://www.egtch.com/archives/tag/wordpress" class="tag-cloud-link tag-link-50 tag-link-position-19" aria-label="WordPress (5个项目)">WordPress</a>
+<a href="http://www.egtch.com/archives/tag/wp-rest-api" class="tag-cloud-link tag-link-64 tag-link-position-20" aria-label="WP REST API (3个项目)">WP REST API</a>
+<a href="http://www.egtch.com/archives/tag/%e4%b8%bb%e9%a2%98" class="tag-cloud-link tag-link-51 tag-link-position-21" aria-label="主题 (2个项目)">主题</a>
+<a href="http://www.egtch.com/archives/tag/%e5%85%bc%e5%ae%b9%e6%80%a7" class="tag-cloud-link tag-link-19 tag-link-position-22" aria-label="兼容性 (2个项目)">兼容性</a>
+<a href="http://www.egtch.com/archives/tag/%e5%a4%87%e4%bb%bd" class="tag-cloud-link tag-link-56 tag-link-position-23" aria-label="备份 (2个项目)">备份</a>
+<a href="http://www.egtch.com/archives/tag/%e6%8f%92%e4%bb%b6" class="tag-cloud-link tag-link-154 tag-link-position-24" aria-label="插件 (4个项目)">插件</a>
+<a href="http://www.egtch.com/archives/tag/%e6%95%b0%e6%8d%ae%e5%ba%93" class="tag-cloud-link tag-link-55 tag-link-position-25" aria-label="数据库 (2个项目)">数据库</a>
+<a href="http://www.egtch.com/archives/tag/%e6%95%b0%e7%bb%84" class="tag-cloud-link tag-link-268 tag-link-position-26" aria-label="数组 (3个项目)">数组</a>
+<a href="http://www.egtch.com/archives/tag/%e6%9c%8d%e5%8a%a1%e5%99%a8" class="tag-cloud-link tag-link-26 tag-link-position-27" aria-label="服务器 (2个项目)">服务器</a>
+<a href="http://www.egtch.com/archives/tag/%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f" class="tag-cloud-link tag-link-48 tag-link-position-28" aria-label="正则表达式 (3个项目)">正则表达式</a>
+<a href="http://www.egtch.com/archives/tag/%e6%b5%8f%e8%a7%88%e5%99%a8" class="tag-cloud-link tag-link-68 tag-link-position-29" aria-label="浏览器 (5个项目)">浏览器</a>
+<a href="http://www.egtch.com/archives/tag/%e7%83%ad%e6%9b%b4%e6%96%b0" class="tag-cloud-link tag-link-235 tag-link-position-30" aria-label="热更新 (3个项目)">热更新</a>            </div>
+                        
+        </div>
+        
+        <div id="ads" style="top: 7001px; position: relative;">
+            <h3><i class="fa fa-share-alt-square" aria-hidden="true"></i> share</h3>
+            <a href="https://github.com/king2088" target="_blank"><img src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/github.png" alt="AD"></a>
+			<a class="share" href="http://www.egtch.com/feed" title="RSS订阅" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i> RSS订阅</a>
+            <a class="share" href="http://www.egtch.com/jQueryapi/" title="jQuery API 中文文档" target="_blank"><i class="fa fa-code" aria-hidden="true"></i> jQuery API</a>
+<script async="" src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/adsbygoogle.js.下载"></script>
+<!-- BlogAD2 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8243351208300995" data-ad-slot="6855720466" data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        </div>
+		<script src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/jquery3.1.0.js.下载"></script>
+		<script src="./node+express+mongodb注册登录实例 _ 明月本无心，行人自回首 - 小小前端_files/darkcyan.js.下载"></script>
+	    </div>
+
+<div id="screen"></div><div id="k-nav"><ul><li><a href="http://www.egtch.com/">首页</a></li><li><a href="http://www.egtch.com/archives/category/program">编程技术</a></li><li><a href="http://www.egtch.com/archives/category/front">前端开发</a></li><li><a href="http://www.egtch.com/archives/category/sql">SQL语句</a></li><li><a href="http://www.egtch.com/archives/category/linux">Linux</a></li><li><a href="http://www.egtch.com/archives/category/life">生活/旅行</a></li><li><a href="http://www.egtch.com/about">About me</a></li><li><a href="http://www.egtch.com/work">作品</a></li><li><a href="http://www.egtch.com/archives/category/buytheme">猪蹄</a></li><li><a href="http://www.egtch.com/minibarcms">MiniBarCMS</a></li></ul></div></body></html>
